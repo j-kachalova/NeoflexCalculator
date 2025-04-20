@@ -20,13 +20,13 @@ public class VacationCalculatorServiceImpl implements VacationCalculatorService 
         int amountPaidDays;
         if (vacationPayRequest.getStartDate() != null && vacationPayRequest.getEndDate() != null) {
             amountPaidDays = DaysCounter.countPaidDays(vacationPayRequest.getStartDate(), vacationPayRequest.getEndDate());
-        } else if (vacationPayRequest.getDays() != null) {
-            amountPaidDays = vacationPayRequest.getDays();
+        } else if (vacationPayRequest.getVacationDays() != null) {
+            amountPaidDays = vacationPayRequest.getVacationDays();
         } else {
             log.error("DECLINED: Vacation days or start/end dates must be provided");
             throw new IllegalArgumentException("Vacation days or start/end dates must be provided.");
         }
-        BigDecimal averageSalaryPerDay = vacationPayRequest.getSalary()
+        BigDecimal averageSalaryPerDay = vacationPayRequest.getAverageSalary()
                 .divide(BigDecimal.valueOf(AVERAGE_DAYS_IN_MOUNT), 2, RoundingMode.HALF_UP);
         BigDecimal vacationPayResponse = averageSalaryPerDay.multiply(BigDecimal.valueOf(amountPaidDays));
         log.info("VacationCalculatorServiceImpl: vacationPayResponse:{}", vacationPayResponse);

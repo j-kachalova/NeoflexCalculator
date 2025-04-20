@@ -17,9 +17,9 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class VacationPayRequest {
     @DecimalMin(value = "0.01", message = "Average salary must be greater than 0")
-    private BigDecimal salary;
+    private BigDecimal averageSalary;
     @Min(value = 1, message = "Vacation days must be at least 1")
-    private Integer days;
+    private Integer vacationDays;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate startDate;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
