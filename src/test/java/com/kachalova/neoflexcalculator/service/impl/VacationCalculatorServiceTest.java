@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @SpringBootTest
 public class VacationCalculatorServiceTest {
     @Autowired
@@ -32,7 +33,6 @@ public class VacationCalculatorServiceTest {
         request.setEndDate(LocalDate.of(2025, 4, 10));
 
         BigDecimal result = service.calculate(request);
-        // Зависит от количества рабочих дней в интервале
         assertEquals(BigDecimal.valueOf(13651.84), result);
     }
 }
