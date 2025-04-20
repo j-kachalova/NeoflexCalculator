@@ -19,7 +19,10 @@ public class VacationCalculatorServiceTest {
 
     @Test
     void testCalculateByVacationDays() {
-        VacationPayRequest request = VacationPayRequest.builder().averageSalary(BigDecimal.valueOf(50000)).vacationDays(8).build();
+        VacationPayRequest request = VacationPayRequest.builder()
+                .averageSalary(BigDecimal.valueOf(50000))
+                .vacationDays(8)
+                .build();
 
         BigDecimal result = service.calculate(request);
         assertEquals(BigDecimal.valueOf(13651.84), result);
